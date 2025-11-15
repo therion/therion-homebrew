@@ -1,0 +1,17 @@
+name: Test Build
+on: [push, pull_request]
+jobs:
+  macOS:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-14, macos-15, macos-26]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Update Homebrew
+        run: brew update
+      - name: Install Formula
+        run: brew install --build-from-source ./therion.rb
+      - name: Test Installation
+        run: brew test therion
