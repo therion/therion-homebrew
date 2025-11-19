@@ -14,51 +14,46 @@ Please launch Terminal app and follow the instructions.
 
 ### 1. Install Command Line Tools
 
-`xcode-select --install`
+    xcode-select --install
 
 ### 2. Install Homebrew - http://brew.sh/
 
-`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 Test it:
 
-`brew update`
-
-`brew doctor`
+    brew update
+    brew doctor
 
 If you want to disable brew analytics type:
 
-`brew analytics off`
+    brew analytics off
 
 ### 3. Install XQuartz
 
 If your macOS doesn't contain X11 server (10.12 Sierra+) install it by following command:
 
-`brew install --cask xquartz`
+    brew install --cask xquartz
 
 ### 4. Install MacTeX
 
-`brew install --cask mactex`
+    brew install --cask mactex
 
 ### 5. Install Therion
 
-`brew untap ladislavb/homebrew-therion`
-
-`brew tap therion/therion-homebrew`
-
-`brew install therion`
-
-I will try to update the formulae after each stable release of Therion so that the version installed by brew is up to date. Feel free to submit a pull request with your updates. Thank you!
+    brew untap ladislavb/homebrew-therion
+    brew tap therion/therion
+    brew install therion
 
 If you are brave enough and want to test the latest (development) revision from Therion's source code on GitHub use:
 
-`brew install --HEAD therion`
+    brew install --HEAD therion
 
 ### 6. Copying Loch to /Applications
 
 Loch is installed to `<prefix>/opt/therion/loch.app/` If you have an older version of Loch installed in your Applications, remove it, then copy the new version with:
 
-`cp -R <prefix>/opt/therion/loch.app /Applications/loch.app`
+    cp -R <prefix>/opt/therion/loch.app /Applications/loch.app
 
 Replace `<prefix>` with `/usr/local` for macOS Intel or `/opt/homebrew` for Apple Silicon
 
@@ -70,13 +65,13 @@ After sucessfull installation you should be able to:
 - run Therion compiler by typing `therion` command to Terminal window
 - launch Loch viewer from Launchpad
 
-## Upgrade
+## Update
 
-Launch Terminal app and type `brew update`
+    brew update
 
 ## Uninstall
 
-Launch Terminal app and type `brew uninstall therion`
+    brew uninstall therion
 
 ## Troubleshooting
 
@@ -86,9 +81,15 @@ After starting XTherion from Terminal you see the following warning: `DEPRECATIO
 
 Solution/Workaround:
 
-- Add homebrew Tcl/Tk version to the first place in $PATH variable: \
-Apple Silicon: `echo 'export PATH="/opt/homebrew/opt/tcl-tk/bin:$PATH"' >> ~/.zshrc` \
-Intel: `echo 'export PATH="/usr/local/homebrew/opt/tcl-tk/bin:$PATH"' >> ~/.zshrc`
+- Add homebrew Tcl/Tk version to the first place in $PATH variable.
+  - Apple Silicon:
+
+        echo 'export PATH="/opt/homebrew/opt/tcl-tk/bin:$PATH"' >> ~/.zshrc
+
+  - Intel:
+
+        echo 'export PATH="/usr/local/homebrew/opt/tcl-tk/bin:$PATH"' >> ~/.zshrc
+
 - Open new Terminal window and run XTherion. It should use newer Tcl/Tk version from now on. **You will probably need to apply also the next fix: XTherion - can't find package BWidget**.
 
 ### XTherion - can't find package BWidget
@@ -102,9 +103,15 @@ You may see the following error after forcing Homebrew's Tcl/Tk version instead 
 
 Solution/Workaround:
 
-- Symlink BWidget from /System/Library/Tcl/ folder to homebrew Tcl/Tk package folder: \
-Apple Silicon: `ln -s /System/Library/Tcl/bwidget1.9.1 /opt/homebrew/opt/tcl-tk/lib/bwidget1.9.1` \
-Intel: `ln -s /System/Library/Tcl/bwidget1.9.1 /usr/local/opt/tcl-tk/lib/bwidget1.9.1`
+- Symlink BWidget from `/System/Library/Tcl/` folder to homebrew Tcl/Tk package folder.
+  - Apple Silicon:
+
+        ln -s /System/Library/Tcl/bwidget1.9.1 /opt/homebrew/opt/tcl-tk/lib/bwidget1.9.1
+
+  - Intel:
+
+        ln -s /System/Library/Tcl/bwidget1.9.1 /usr/local/opt/tcl-tk/lib/bwidget1.9.1
+
 - Open new Terminal window and run XTherion. It should work OK from now on.
 
 ### Old issues 
