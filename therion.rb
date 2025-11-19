@@ -8,6 +8,7 @@ class Therion < Formula
 
   depends_on "catch2" => :build
   depends_on "cmake" => :build
+  depends_on "ninja" => :build
   depends_on "fmt"
   depends_on "freetype"
   depends_on "ghostscript"
@@ -15,7 +16,6 @@ class Therion < Formula
   depends_on "jpeg-turbo"
   depends_on "lcdf-typetools"
   depends_on "libpng"
-  depends_on "ninja" => :build
   depends_on "pkg-config"
   depends_on "proj"
   depends_on "tcl-tk"
