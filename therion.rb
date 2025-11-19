@@ -3,7 +3,7 @@ class Therion < Formula
   homepage "https://therion.speleo.sk"
   url "https://github.com/therion/therion/archive/refs/tags/v6.3.4.tar.gz"
   sha256 "e678a539aeab436465556e769fa9ecbc51b2944f8969a34b29cc3fdc6d78765a"
-  revision 1
+  revision 2
   head "https://github.com/therion/therion.git", branch: "master"
 
   depends_on "catch2" => :build
@@ -15,6 +15,7 @@ class Therion < Formula
   depends_on "jpeg-turbo"
   depends_on "lcdf-typetools"
   depends_on "libpng"
+  depends_on "ninja" => :build
   depends_on "pkg-config"
   depends_on "proj"
   depends_on "tcl-tk"
@@ -30,8 +31,8 @@ class Therion < Formula
     ENV.prepend_path "PATH", "/Library/TeX/texbin"
 
     mkdir "build" do
-      system "cmake", "..", *std_cmake_args
-      system "make", "install"
+      system "cmake", "-GNinja", "..", *std_cmake_args
+      system "cmake", "--build", ".", "-t", "install"
     end
   end
 
